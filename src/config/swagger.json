@@ -1,0 +1,179 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "File Parser APIS",
+    "description": "REST API for parsing large text-file"
+  },
+  "host": "localhost:3000",
+  "basePath": "/v1",
+  "schemes": ["http"],
+  "paths": {
+    "/file-parsers/number-of-words": {
+      "get": {
+        "tags": ["File Parser"],
+        "summary": "Get number of words from text file",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/FileParserNumber"
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "schema": {
+              "$ref": "#/definitions/NotFound"
+            }
+          }
+        }
+      }
+    },
+    "/file-parsers/number-of-lines": {
+      "get": {
+        "tags": ["File Parser"],
+        "summary": "Get number of lines from text file",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/FileParserNumber"
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "schema": {
+              "$ref": "#/definitions/NotFound"
+            }
+          }
+        }
+      }
+    },
+    "/file-parsers/longest-words": {
+      "get": {
+        "tags": ["File Parser"],
+        "summary": "Get longest words in paragraphs from text file",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/FileParserText"
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "schema": {
+              "$ref": "#/definitions/NotFound"
+            }
+          }
+        }
+      }
+    },
+    "/file-parsers/number-of-sentences": {
+      "get": {
+        "tags": ["File Parser"],
+        "summary": "Get number of sentences from text file",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/FileParserNumber"
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "schema": {
+              "$ref": "#/definitions/NotFound"
+            }
+          }
+        }
+      }
+    },
+    "/file-parsers/number-of-paragraph": {
+      "get": {
+        "tags": ["File Parser"],
+        "summary": "Get number of paragraph from text file",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/FileParserNumber"
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "schema": {
+              "$ref": "#/definitions/NotFound"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "FileParserNumber": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "Response status true or false"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message for file parser"
+        },
+        "data": {
+          "type": "integer",
+          "description": "Calculated number from text file"
+        }
+      },
+      "required": ["success", "message", "data"]
+    },
+    "FileParserText": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "Response status true or false"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message for file parser"
+        },
+        "data": {
+          "type": "string",
+          "description": "Calculated string from text file"
+        }
+      },
+      "required": ["success", "message", "data"]
+    },
+    "NotFound": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "Response status true or false"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message for file parser"
+        },
+        "data": {
+          "type": "integer",
+          "description": "Not found rescource"
+        }
+      },
+      "required": ["success", "message", "data"]
+    }
+  }
+}
