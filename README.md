@@ -22,11 +22,13 @@ Step 3: cp .env.example .env
 
 Step 4: npm i
 
-Step 5: npm run db:seed 5e6  //for 5 million record
+Step 5: npm run data:seed 5e6  //for 5 million record 
 
-Step 6: now copy the filename from src/seeder/data and past the filename in src/controller/fileparser/file-parser.helper.js -- in line 5
+Step 6: Please wait until the seed is complete
 
-Step 7: npm run dev
+Step 7: now copy the filename from src/seeder/data and past the filename in src/controller/fileparser/file-parser.helper.js -- in line 5
+
+Step 8: npm run dev
 
 ```
 ## N:B: Now please open the browser window and go to the swagger api docs at http://localhost:3000/v1/api-docs/ to call the respected api to get the result

@@ -15,9 +15,9 @@ let inParagraph = false;
 
 const counterMap = new Map();
 
-const processLineCount = function () {
-  lineCount++;
-};
+// const processLineCount = function () {
+//   lineCount++;
+// };
 
 const processCharacterCount = function (line) {
   characterCount += line.length;
@@ -55,7 +55,7 @@ const increaseParagraphCounter = function () {
 };
 
 const processAllCounter = function (line) {
-  processLineCount();
+  //processLineCount();
   processCharacterCount(line);
   processParagraphCount(line);
   processSentenceCount(line);
