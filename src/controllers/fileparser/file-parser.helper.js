@@ -1,13 +1,12 @@
-const readline = require("readline");
-const fs = require("fs");
 const { resolve } = require("path");
 const { HTTP_OK } = require("../../config/http-constants");
 const LineByLineReader = require("line-by-line");
 
-const fileName = "seed_data_four_million.txt";
+const fileName = "seed_data_small_file.txt";
 const filekey = fileName.split(".")[0];
 
 let lineCount = 0;
+let characterCount = 0;
 let wordCount = 0;
 let longestWord = "";
 let sentenceCount = 0;
@@ -18,6 +17,10 @@ const counterMap = new Map();
 
 const processLineCount = function () {
   lineCount++;
+};
+
+const processCharacterCount = function (line) {
+  characterCount += line.length;
 };
 
 const processParagraphCount = function (line) {
@@ -53,6 +56,7 @@ const increaseParagraphCounter = function () {
 
 const processAllCounter = function (line) {
   processLineCount();
+  processCharacterCount(line);
   processParagraphCount(line);
   processSentenceCount(line);
   processWordCountAndLongestWord(line);
@@ -60,6 +64,7 @@ const processAllCounter = function (line) {
 
 const setAllMapKey = function () {
   counterMap.set(`${filekey}_word_count`, wordCount);
+  counterMap.set(`${filekey}_character_count`, characterCount);
   counterMap.set(`${filekey}_line_count`, lineCount);
   counterMap.set(`${filekey}_longest_word`, longestWord);
   counterMap.set(`${filekey}_sentence_count`, sentenceCount);
@@ -68,6 +73,7 @@ const setAllMapKey = function () {
 
 const resetAllVariable = function () {
   lineCount = 0;
+  paragraphCount = 0;
   wordCount = 0;
   paragraphCount = 0;
   longestWord = "";
@@ -78,6 +84,13 @@ const getWordsCount = function () {
   return {
     value: counterMap.get(`${filekey}_word_count`),
     message: "Number of words from text file",
+  };
+};
+
+const getCharacterCount = function () {
+  return {
+    value: counterMap.get(`${filekey}_character_count`),
+    message: "Number of character from text file",
   };
 };
 
@@ -120,11 +133,6 @@ const fileProcessor = function (req, res, callback) {
 
   const filePath = resolve(__dirname, "../../seeder/data/" + fileName);
 
-  // const readLine = readline.createInterface({
-  //   input: fs.createReadStream(filePath),
-  //   crlfDelay: Infinity,
-  // });
-
   const readLine = new LineByLineReader(filePath);
 
   readLine.on("line", (line) => {
@@ -145,6 +153,7 @@ const fileProcessor = function (req, res, callback) {
 
 module.exports = {
   getWordsCount,
+  getCharacterCount,
   getLineCount,
   getLongestWord,
   getSentenceCount,

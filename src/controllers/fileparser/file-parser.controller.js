@@ -1,6 +1,7 @@
 const {
   getWords,
   getLines,
+  getCharacters,
   getLongestWords,
   getSentences,
   getParagraphs,
@@ -12,6 +13,10 @@ const getNumberOfWords = (req, res) => {
 
 const getNumberOfLines = (req, res) => {
   return getLines(req, res);
+};
+
+const getNumberOfCharacters = (req, res) => {
+  return getCharacters(req, res);
 };
 
 const getLongestWord = (req, res) => {
@@ -29,6 +34,7 @@ const getNumberOfParagraphs = (req, res) => {
 module.exports = {
   getNumberOfWords,
   getNumberOfLines,
+  getNumberOfCharacters,
   getLongestWord,
   getNumberOfSentence,
   getNumberOfParagraphs,

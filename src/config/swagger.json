@@ -31,10 +31,10 @@
         }
       }
     },
-    "/file-parsers/number-of-lines": {
+    "/file-parsers/number-of-characters": {
       "get": {
         "tags": ["File Parser"],
-        "summary": "Get number of lines from text file",
+        "summary": "Get number of characters from text file",
         "description": "",
         "parameters": [],
         "responses": {

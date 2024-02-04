@@ -11,8 +11,6 @@ if (!range) {
 
 const loopRange = Number(range);
 
-console.log("loopRange ", loopRange)
-
 const toWords = new ToWords({
   localeCode: "en-IN",
   converterOptions: {
@@ -28,7 +26,7 @@ const numberToText = toWords
   .join("_")
   .toLocaleLowerCase();
 
-const fileName = `./seed_data_${numberToText}.txt`;
+const fileName = `./seed_data_${numberToText}_${Date.now()}.txt`;
 const filePath = resolve(__dirname, `./data/${fileName}`);
 
 const paragraphArray = [

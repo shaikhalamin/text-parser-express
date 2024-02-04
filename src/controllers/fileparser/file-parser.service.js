@@ -1,6 +1,7 @@
 const {
   fileProcessor,
   getWordsCount,
+  getCharacterCount,
   getLineCount,
   getLongestWord,
   getSentenceCount,
@@ -9,6 +10,10 @@ const {
 
 const getWords = (req, res) => {
   return fileProcessor(req, res, getWordsCount);
+};
+
+const getCharacters = (req, res) => {
+  return fileProcessor(req, res, getCharacterCount);
 };
 
 const getLines = (req, res) => {
@@ -30,6 +35,7 @@ const getParagraphs = (req, res) => {
 module.exports = {
   getWords,
   getLines,
+  getCharacters,
   getLongestWords,
   getSentences,
   getParagraphs,
